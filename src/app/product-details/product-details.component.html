@@ -1,0 +1,13 @@
+<p>product-details works!</p>
+<div class="product-details ml-1 mt-1" *ngIf="productList">
+  <div class="row ml-1">
+    <div class="col-md-3 mb-2"  *ngFor='let product of productList'>
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= {{product.itemImageURL}} alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{product.itemName}}</h5>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div formArrayName="arr" *ngFor="let a of myForm.get('arr').controls; let i = index">
+    <div [formGroupName]="i" style="margin-bottom: 10px;">
+      <b>Form Number- {{i+1}}</b>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="itemName">Name</label>
+          <input formControlName="itemName" type="text" id="itemName" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="itemDescription">Description</label>
+          <input formControlName="itemDescription" type="text" id="itemDescription" class="form-control">
+        </div>
+        <div class="col-md-4">
+          <label for="itemPrice">Price</label>
+          <input formControlName="itemPrice" type="text" id="itemPrice" class="form-control">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="itemCategory">Category </label>
+            <select  formControlName="itemCategory" class="form-control" id="itemCategory">
+              <option>Select</option>
+              <option>Electronics</option>
+              <option>Clothes</option>
+              <option>Blanket</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <label for="itemImageURL">Image URL</label>
+          <input  formControlName="itemImageURL" type="text" id="itemImageURL" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <label for="itemMobNumber">Phone</label>
+          <input  formControlName="itemMobNumber" type="text" id="itemMobNumber" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <div class="form-group">
+            <label for="itemTelType">Select list:</label>
+            <select  formControlName="itemTelType" class="form-control" id="itemTelType">
+              <option>Select</option>
+              <option>Mobile</option>
+              <option>Landline</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+  <br>
+  <button type="button" (click)="addItem()" style="margin-right: 5px;">Add New Product</button>
+  <button type="submit" [disabled]="myForm.status === 'INVALID'">Submit</button>
+  <button (click)="resetForms()">Reset</button>
+</form>
+<alert *ngIf="myForm.value.arr.length === 5" type="danger">
+  <strong>Oh snap! Please upgrade to use more than 5 forms!!:(</strong>
+</alert>
+<!--Form Array Experiments-->
+
